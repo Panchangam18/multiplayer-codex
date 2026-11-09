@@ -37,7 +37,7 @@ A Developer ID–signed and notarized release remains future work; do not descri
 ## Connect
 
 1. Launch the companion on both Macs. It lives in the menu bar, not the Dock.
-2. Follow the welcome panel or choose **Connect Codex…** from the people icon.
+2. Follow the welcome panel or choose **Enable Multiplayer** from the people icon. It is disabled when the status already says **Connected to Codex**.
 3. If Codex is already connected, no restart is needed. Otherwise the companion requests permission before quitting and reopening Codex with a localhost integration port. Finish active agent work first.
 4. Allow local-network access when prompted. Your Codex username/avatar is used automatically.
 5. Right-click an idle local chat → **Multiplayer** → choose a nearby person. Compare the six-digit code on both screens, then accept on the recipient.
@@ -49,13 +49,13 @@ You plus four guests can share one chat. Pending invitations reserve places. **D
 | Symptom | Check |
 | --- | --- |
 | No people icon | Confirm the installed companion is open; check hidden menu-bar icons. |
-| Waiting for Codex | Choose Connect Codex. If it cannot reopen, finish active work and quit Codex normally before retrying. |
+| Not connected | Choose Enable Multiplayer. If it cannot reopen, finish active work and quit Codex normally before retrying. |
 | Unsupported build | Compare your Codex version with the release notes. Don't modify or replace the Codex app bundle. |
 | No nearby people | Both companions must be open; allow local-network access and wait for discovery. |
 | Connecting fails | Keep the recipient awake. Guest Wi-Fi/client isolation may block traffic; use a suitable private LAN or actual wired network link. |
 | Network changed | Wait for nearby discovery to refresh, then send a new invitation. Old sessions aren't automatically resumed. |
 | Agent is working | Wait for the current turn before sending another message. Guest steering/queue mutations aren't supported. |
-| Need logs | Menu bar → View logs. Redact private information; never publish device keys, transcripts, or credentials. |
+| Need logs | Open `~/Library/Application Support/Multiplayer Codex/companion.log`. Redact private information; never publish device keys, transcripts, or credentials. |
 
 The integration port (`9337`) must stay localhost-only. Multiplayer's LAN listener uses a separate dynamically assigned TLS port. Do not expose the integration port to the network or disable your firewall globally.
 

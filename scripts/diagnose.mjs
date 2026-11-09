@@ -52,5 +52,5 @@ console.log(JSON.stringify({ app, version: packageInfo.version, layout, renderer
 try {
   const response = await fetch(`http://127.0.0.1:${process.env.MULTIPLAYER_CODEX_PORT || 9337}/json/version`, { signal: AbortSignal.timeout(1500) });
   console.log('Local integration endpoint:', response.ok ? 'available' : response.status);
-} catch { console.log('Local integration endpoint: unavailable; use the companion’s Connect Codex menu.'); }
+} catch { console.log('Local integration endpoint: unavailable; use the companion’s Enable Multiplayer menu.'); }
 if (Object.values(markers).some(value => !value)) process.exitCode = 1;

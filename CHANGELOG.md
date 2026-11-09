@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2 — Minimal menu
+
+- Menu bar now contains only connection status, Enable Multiplayer, and Quit.
+- Enable Multiplayer is disabled while connected; setup guidance uses the same wording.
+
 ## 0.3.1 — Simpler welcome
 
 - Removed the extra network, capacity, and host-permissions paragraph from the welcome panel. Details remain in the documentation.

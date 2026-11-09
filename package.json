@@ -1,6 +1,6 @@
 {
   "name": "multiplayer-codex",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "license": "MIT",
   "repository": { "type": "git", "url": "https://github.com/Panchangam18/multiplayer-codex.git" },

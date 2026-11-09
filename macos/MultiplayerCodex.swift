@@ -1,10 +1,11 @@
 import AppKit
 import Foundation
 
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private var item: NSStatusItem!
     private var child: Process?
     private var statusItem: NSMenuItem!
+    private var enableItem: NSMenuItem!
     private var timer: Timer?
     private var terminationSignals: [DispatchSourceSignal] = []
     private var connected = false
@@ -18,15 +19,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.button?.image = NSImage(systemSymbolName: "person.2.circle", accessibilityDescription: "Multiplayer Codex")
         let menu = NSMenu()
+        menu.autoenablesItems = false
+        menu.delegate = self
         statusItem = NSMenuItem(title: "Connecting…", action: nil, keyEquivalent: "")
+        statusItem.isEnabled = false
         menu.addItem(statusItem)
         menu.addItem(.separator())
-        menu.addItem(withTitle: "Connect Codex…", action: #selector(connectCodex), keyEquivalent: "")
-        menu.addItem(withTitle: "Fallback display name…", action: #selector(changeName), keyEquivalent: "")
-        menu.addItem(withTitle: "Getting started…", action: #selector(showWelcome), keyEquivalent: "")
-        menu.addItem(withTitle: "View setup guide", action: #selector(openProject), keyEquivalent: "")
-        menu.addItem(withTitle: "View logs", action: #selector(openLogs), keyEquivalent: "")
-        menu.addItem(withTitle: "GitHub", action: #selector(openGitHub), keyEquivalent: "")
+        enableItem = menu.addItem(withTitle: "Enable Multiplayer", action: #selector(connectCodex), keyEquivalent: "")
         menu.addItem(.separator())
         menu.addItem(withTitle: "Quit Multiplayer Codex", action: #selector(quit), keyEquivalent: "q")
         for menuItem in menu.items { menuItem.target = self }
@@ -67,20 +66,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func refreshStatus() {
         connected = false
+        defer { enableItem.isEnabled = !connected }
         if child?.isRunning == false { statusItem.title = "Companion stopped — reopen to reconnect"; return }
         guard let data = try? Data(contentsOf: directory.appendingPathComponent("status.json")),
               let status = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               status["pid"] as? Int == Int(child?.processIdentifier ?? -1) else { return }
         switch status["state"] as? String {
-        case "connected": connected = true; statusItem.title = "Connected · right-click a chat → Multiplayer"
-        case "incompatible": statusItem.title = "Unsupported Codex build · sharing disabled"
-        default: statusItem.title = "Waiting for Codex · choose Connect"
+        case "connected": connected = true; statusItem.title = "Connected to Codex"
+        case "incompatible": statusItem.title = "Unsupported Codex version"
+        default: statusItem.title = "Not connected"
         }
     }
 
     @objc private func connectCodex() {
         refreshStatus()
-        if connected { showWelcome(); return }
+        if connected { return }
         let appURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.openai.codex")
             ?? URL(fileURLWithPath: "/Applications/ChatGPT.app")
         guard FileManager.default.fileExists(atPath: appURL.path) else {
@@ -89,7 +89,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let running = NSRunningApplication.runningApplications(withBundleIdentifier: "com.openai.codex")
         if !running.isEmpty {
             let alert = NSAlert()
-            alert.messageText = "Reconnect Codex with multiplayer?"
+            alert.messageText = "Enable multiplayer in Codex?"
             alert.informativeText = "This quits and reopens Codex with a local integration port. Finish active agent work first. Your app and saved chats stay in place."
             alert.addButton(withTitle: "Quit and reopen")
             alert.addButton(withTitle: "Cancel")
@@ -113,34 +113,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @objc private func changeName() {
-        let alert = NSAlert()
-        alert.messageText = "Fallback display name"
-        alert.informativeText = "Multiplayer uses your Codex profile automatically. This name is used only when that profile is unavailable. Changing it ends current sharing sessions."
-        let input = NSTextField(string: UserDefaults.standard.string(forKey: "displayName") ?? NSFullUserName())
-        input.frame = NSRect(x: 0, y: 0, width: 280, height: 24)
-        alert.accessoryView = input
-        alert.addButton(withTitle: "Save")
-        alert.addButton(withTitle: "Cancel")
-        NSApp.activate(ignoringOtherApps: true)
-        if alert.runModal() == .alertFirstButtonReturn {
-            let name = input.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !name.isEmpty else { return }
-            UserDefaults.standard.set(String(name.prefix(60)), forKey: "displayName")
-            child?.terminate()
-            child?.waitUntilExit()
-            startService()
-        }
-    }
-
     @objc private func openProject() {
         if let url = Bundle.main.resourceURL?.appendingPathComponent("Getting Started.html") { NSWorkspace.shared.open(url) }
-    }
-
-    @objc private func openLogs() { NSWorkspace.shared.open(directory) }
-
-    @objc private func openGitHub() {
-        if let url = URL(string: "https://github.com/Panchangam18/multiplayer-codex") { NSWorkspace.shared.open(url) }
     }
 
     @objc private func showWelcome() {
@@ -148,8 +122,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let wasConnected = connected
         let alert = NSAlert()
         alert.messageText = wasConnected ? "You're ready to share" : "Welcome to Multiplayer Codex"
-        alert.informativeText = "1. Install and open this companion on both Macs.\n2. Connect Codex using the people icon in the menu bar.\n3. Right-click a chat → Multiplayer, invite someone, and compare the pairing code.\n\nThis is an unofficial, experimental integration."
-        alert.addButton(withTitle: wasConnected ? "Done" : "Connect Codex…")
+        alert.informativeText = "1. Install and open this companion on both Macs.\n2. Choose Enable Multiplayer from the people icon in the menu bar.\n3. Right-click a chat → Multiplayer, invite someone, and compare the pairing code.\n\nThis is an unofficial, experimental integration."
+        alert.addButton(withTitle: wasConnected ? "Done" : "Enable Multiplayer")
         if !wasConnected { alert.addButton(withTitle: "Not now") }
         alert.addButton(withTitle: "Setup guide")
         NSApp.activate(ignoringOtherApps: true)
@@ -160,6 +134,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func quit() { NSApp.terminate(nil) }
+
+    func menuWillOpen(_ menu: NSMenu) { refreshStatus() }
 
     func applicationWillTerminate(_ notification: Notification) {
         timer?.invalidate()

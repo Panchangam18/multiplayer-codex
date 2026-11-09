@@ -14,7 +14,7 @@ npm run verify:mac
 
 Builds an app, architecture-labeled ZIP and DMG, and SHA-256 checksums in `dist/`. Intel source builds are possible but unverified. Recipients need neither Node nor npm. Builds are ad-hoc signed, not notarized. Set `OUTPUT_DIR` to a separate directory when building while the companion runs.
 
-`npm start` runs the service without the menu-bar app. The companion's Connect action opens Codex with a localhost-only integration port. Never expose or forward that port.
+`npm start` runs the service without the menu-bar app. The companion's Enable Multiplayer action opens Codex with a localhost-only integration port. Never expose or forward that port.
 
 | Variable | Purpose |
 | --- | --- |
