@@ -39,7 +39,7 @@ extension AppDelegate {
         precondition(!menu.autoenablesItems)
         delegate.connected = true
         delegate.updateConnectionMenu()
-        precondition(actions[0].title == "Disconnect to Codex")
+        precondition(actions[0].title == "Disconnect from Codex")
         precondition(actions[0].isEnabled)
         delegate.connecting = true
         delegate.updateConnectionMenu()

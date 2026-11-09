@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.4 — Wording fix
+
+- Corrected the menu label to Disconnect from Codex.
+
 ## 0.3.3 — Connection toggle
 
 - Replaced the status row and enable action with Connect to Codex / Disconnect to Codex, plus Quit.

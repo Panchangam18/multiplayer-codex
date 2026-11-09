@@ -78,7 +78,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     private func updateConnectionMenu() {
-        connectionItem.title = connected ? "Disconnect to Codex" : "Connect to Codex"
+        connectionItem.title = connected ? "Disconnect from Codex" : "Connect to Codex"
         connectionItem.isEnabled = !connecting
     }
 

@@ -37,7 +37,7 @@ A Developer ID–signed and notarized release remains future work; do not descri
 ## Connect
 
 1. Launch the companion on both Macs. It lives in the menu bar, not the Dock.
-2. Follow the welcome panel or choose **Connect to Codex** from the people icon. Once connected, the same button becomes **Disconnect to Codex**.
+2. Follow the welcome panel or choose **Connect to Codex** from the people icon. Once connected, the same button becomes **Disconnect from Codex**.
 3. If Codex is already connected, no restart is needed. Otherwise the companion requests permission before quitting and reopening Codex with a localhost integration port. Finish active agent work first.
 4. Allow local-network access when prompted. Your Codex username/avatar is used automatically.
 5. Right-click an idle local chat → **Multiplayer** → choose a nearby person. Compare the six-digit code on both screens, then accept on the recipient.
