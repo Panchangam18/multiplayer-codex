@@ -37,19 +37,21 @@ A Developer ID–signed and notarized release remains future work; do not descri
 ## Connect
 
 1. Launch the companion on both Macs. It lives in the menu bar, not the Dock.
-2. Follow the welcome panel or choose **Enable Multiplayer** from the people icon. It is disabled when the status already says **Connected to Codex**.
+2. Follow the welcome panel or choose **Connect to Codex** from the people icon. Once connected, the same button becomes **Disconnect to Codex**.
 3. If Codex is already connected, no restart is needed. Otherwise the companion requests permission before quitting and reopening Codex with a localhost integration port. Finish active agent work first.
 4. Allow local-network access when prompted. Your Codex username/avatar is used automatically.
 5. Right-click an idle local chat → **Multiplayer** → choose a nearby person. Compare the six-digit code on both screens, then accept on the recipient.
 
 You plus four guests can share one chat. Pending invitations reserve places. **Done** closes the sheet without disconnecting anyone. Use **End sharing**, **Leave chat**, or **Remove** to change membership.
 
+The menu bar has just the connect/disconnect toggle and **Quit**. Disconnect stops discovery, ends sharing sessions, and removes multiplayer UI without quitting Codex. It stays off until you reconnect, even after reopening the companion. Reconnecting reuses Codex's local integration port if it is still available. Disconnecting does not close that port; quit and reopen Codex normally to disable it.
+
 ## Troubleshooting
 
 | Symptom | Check |
 | --- | --- |
 | No people icon | Confirm the installed companion is open; check hidden menu-bar icons. |
-| Not connected | Choose Enable Multiplayer. If it cannot reopen, finish active work and quit Codex normally before retrying. |
+| Not connected | Choose Connect to Codex. If it cannot reopen, finish active work and quit Codex normally before retrying. |
 | Unsupported build | Compare your Codex version with the release notes. Don't modify or replace the Codex app bundle. |
 | No nearby people | Both companions must be open; allow local-network access and wait for discovery. |
 | Connecting fails | Keep the recipient awake. Guest Wi-Fi/client isolation may block traffic; use a suitable private LAN or actual wired network link. |

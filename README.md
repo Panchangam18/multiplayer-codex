@@ -16,11 +16,11 @@ Downloads, verifies, installs to `~/Applications`, and opens the companion. **No
 
 ## Share a chat
 
-1. Click the **people icon** in the menu bar → **Enable Multiplayer**.
+1. Click the **people icon** in the menu bar → **Connect to Codex**.
 2. Right-click a chat → **Multiplayer** → invite someone on the same network.
 3. Compare the pairing code and accept. Keep chatting in Codex as usual.
 
-**Done** closes the picker. **End sharing** removes the collaboration UI.
+**Done** closes the picker. **End sharing** ends that chat’s session. **Disconnect to Codex** in the menu bar turns multiplayer off without closing Codex.
 
 ## Good to know
 

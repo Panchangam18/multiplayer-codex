@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3 — Connection toggle
+
+- Replaced the status row and enable action with Connect to Codex / Disconnect to Codex, plus Quit.
+- Disconnect stops the companion service and sharing without closing Codex; the disconnected preference survives relaunch.
+- Reconnect reuses an available local integration port instead of unnecessarily restarting Codex.
+
 ## 0.3.2 — Minimal menu
 
 - Menu bar now contains only connection status, Enable Multiplayer, and Quit.

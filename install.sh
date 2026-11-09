@@ -78,7 +78,7 @@ install_multiplayer_codex() (
   printf 'Installed to %s\n' "$destination"
   if [[ -n "$backup" ]]; then printf 'Previous version saved at %s\n' "$backup"; fi
   printf 'Unofficial, unnotarized preview. No macOS security settings were changed.\n'
-  printf 'Next: people icon in the menu bar → Enable Multiplayer. Install on each Mac, then right-click a chat → Multiplayer.\n'
+  printf 'Next: people icon in the menu bar → Connect to Codex. Install on each Mac, then right-click a chat → Multiplayer.\n'
   if (( launch )); then
     if ! open "$destination"; then
       printf 'Installed, but macOS did not open it. See https://github.com/Panchangam18/multiplayer-codex/blob/main/docs/installation.md#preview-security-warning\n' >&2
