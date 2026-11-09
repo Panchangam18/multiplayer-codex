@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 — Simpler welcome
+
+- Removed the extra network, capacity, and host-permissions paragraph from the welcome panel. Details remain in the documentation.
+- Included the simplified README and kept installer links pointed at the current public script.
+
 ## 0.3.0 — Public preview
 
 - Native Codex chat sharing for one host and four guests over a local network.

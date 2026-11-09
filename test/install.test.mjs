@@ -6,10 +6,11 @@ import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const installer = resolve('install.sh');
+const currentVersion = readFileSync(installer, 'utf8').match(/local version="([^"]+)"/)[1];
 const checksum = readFileSync(installer, 'utf8').match(/local checksum="([a-f0-9]{64})"/)[1];
 const macTest = (name, run) => test(name, { skip: process.platform !== 'darwin' }, run);
 
-function appFixture(path, version = '0.3.0', identifier = 'com.multiplayer-codex.companion') {
+function appFixture(path, version = currentVersion, identifier = 'com.multiplayer-codex.companion') {
   mkdirSync(join(path, 'Contents'), { recursive: true });
   writeFileSync(join(path, 'Contents/Info.plist'), `<?xml version="1.0"?><plist version="1.0"><dict><key>CFBundleIdentifier</key><string>${identifier}</string><key>CFBundleShortVersionString</key><string>${version}</string></dict></plist>`);
 }
@@ -95,7 +96,7 @@ macTest('installer fails closed on bad downloads and cleans temporary files', co
 
 macTest('installer rejects a downloaded app with unexpected identity or version', context => {
   const setup = fixture(context);
-  for (const [version, identifier] of [['0.3.0', 'unrelated.app'], ['99.0.0', 'com.multiplayer-codex.companion']]) {
+  for (const [version, identifier] of [[currentVersion, 'unrelated.app'], ['99.0.0', 'com.multiplayer-codex.companion']]) {
     appFixture(setup.bundle, version, identifier);
     const result = setup.run();
     assert.notEqual(result.status, 0);
@@ -107,7 +108,7 @@ macTest('installer rejects a downloaded app with unexpected identity or version'
 
 macTest('installer refuses unrelated destinations and symlinks', context => {
   const setup = fixture(context);
-  appFixture(setup.destination, '0.3.0', 'unrelated.app');
+  appFixture(setup.destination, currentVersion, 'unrelated.app');
   assert.match(setup.run().stderr, /unrelated app/);
   rmSync(setup.destination, { recursive: true });
   symlinkSync(setup.bundle, setup.destination);

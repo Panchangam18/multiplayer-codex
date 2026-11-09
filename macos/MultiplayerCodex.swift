@@ -148,7 +148,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let wasConnected = connected
         let alert = NSAlert()
         alert.messageText = wasConnected ? "You're ready to share" : "Welcome to Multiplayer Codex"
-        alert.informativeText = "1. Install and open this companion on both Macs.\n2. Connect Codex using the people icon in the menu bar.\n3. Right-click a chat → Multiplayer, invite someone, and compare the pairing code.\n\nUp to five people, on a network that allows device-to-device connections. Guests use the host's agent and permissions—share only with people you trust.\n\nThis is an unofficial, experimental integration."
+        alert.informativeText = "1. Install and open this companion on both Macs.\n2. Connect Codex using the people icon in the menu bar.\n3. Right-click a chat → Multiplayer, invite someone, and compare the pairing code.\n\nThis is an unofficial, experimental integration."
         alert.addButton(withTitle: wasConnected ? "Done" : "Connect Codex…")
         if !wasConnected { alert.addButton(withTitle: "Not now") }
         alert.addButton(withTitle: "Setup guide")

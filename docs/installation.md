@@ -16,7 +16,7 @@ Run on each Mac:
 curl -fsSL https://raw.githubusercontent.com/Panchangam18/multiplayer-codex/main/install.sh | bash
 ```
 
-The [installer](../install.sh) downloads a pinned release, checks its SHA-256, verifies its app signature and identity, installs to `~/Applications`, and opens the companion. It requires no sudo, Node, or npm. It does not restart Codex, delete chats, remove quarantine, or change macOS security settings. The preview is still not notarized.
+The [installer](https://github.com/Panchangam18/multiplayer-codex/blob/main/install.sh) downloads a pinned release, checks its SHA-256, verifies its app signature and identity, installs to `~/Applications`, and opens the companion. It requires no sudo, Node, or npm. It does not restart Codex, delete chats, remove quarantine, or change macOS security settings. The preview is still not notarized.
 
 To inspect before running, download `install.sh`, read it, then run `bash install.sh`. Use `bash install.sh --no-open` to install without launching. Rerunning the command opens an already-installed matching version; for upgrades, quit the companion first. A replaced app is backed up beside the installation.
 

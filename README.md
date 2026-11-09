@@ -12,7 +12,7 @@ curl -fsSL https://raw.githubusercontent.com/Panchangam18/multiplayer-codex/main
 
 Downloads, verifies, installs to `~/Applications`, and opens the companion. **No sudo, Node, or extra account needed.** Requires Apple silicon, macOS 14+, and Codex installed.
 
-[Inspect the installer](install.sh) · [Download manually](https://github.com/Panchangam18/multiplayer-codex/releases)
+[Inspect the installer](https://github.com/Panchangam18/multiplayer-codex/blob/main/install.sh) · [Download manually](https://github.com/Panchangam18/multiplayer-codex/releases)
 
 ## Share a chat
 
