@@ -2,8 +2,8 @@
 set -euo pipefail
 
 install_multiplayer_codex() (
-  local version="0.3.1"
-  local checksum="bc9ec5ec7f29849c490d5310666919eb2a36f95cfa137cc72548de29fc067a3a"
+  local version="0.3.2"
+  local checksum="99100186c5cfbadc397294ea406e70023f0f61ba6fdd3e3bc9644792ab17146d"
   local launch=1
   case "${1:-}" in
     --no-open) launch=0 ;;
