@@ -8,7 +8,19 @@
 
 No Node.js, npm, separate collaboration account, administrator installer, or hosted relay is required for the packaged app. Codex is not bundled.
 
-## Download
+## One-command install
+
+Run on each Mac:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Panchangam18/multiplayer-codex/main/install.sh | bash
+```
+
+The [installer](../install.sh) downloads a pinned release, checks its SHA-256, verifies its app signature and identity, installs to `~/Applications`, and opens the companion. It requires no sudo, Node, or npm. It does not restart Codex, delete chats, remove quarantine, or change macOS security settings. The preview is still not notarized.
+
+To inspect before running, download `install.sh`, read it, then run `bash install.sh`. Use `bash install.sh --no-open` to install without launching. Rerunning the command opens an already-installed matching version; for upgrades, quit the companion first. A replaced app is backed up beside the installation.
+
+## Manual download
 
 1. Open [GitHub Releases](https://github.com/Panchangam18/multiplayer-codex/releases). Select the Apple-silicon DMG and optionally its SHA256SUMS file.
 2. To verify a downloaded DMG, run `shasum -a 256` on the file and compare its hash with the DMG entry in the release's checksum file. Check the exact version and filename.
@@ -49,10 +61,10 @@ The integration port (`9337`) must stay localhost-only. Multiplayer's LAN listen
 
 ## Updates and removal
 
-Quit **Multiplayer Codex**, replace its installed app with the new version, and reopen it. Update both Macs and re-invite. This does not require replacing Codex or deleting its saved chats.
+Quit **Multiplayer Codex** and rerun the install command, or replace its installed app manually. Update both Macs and re-invite. This does not require replacing Codex or deleting its saved chats.
 
 To uninstall, quit the companion and move it to the Trash. Quit and reopen Codex normally to remove the local integration port. Optional companion state remains in `~/Library/Application Support/Multiplayer Codex`; deleting that folder removes device identity, logs, and author metadata, not Codex history. Received history cannot be retroactively erased from collaborators' devices.
 
 ## Source build
 
-See the [README](../README.md#build-from-source). A build includes only companion source/runtime dependencies, never your installed Codex app, device keys, or transcripts. `npm run verify:mac` validates the generated bundle; it does not prove clean-machine launch approval.
+See [Development](development.md). A build includes only companion source/runtime dependencies, never your installed Codex app, device keys, or transcripts. `npm run verify:mac` validates the generated bundle; it does not prove clean-machine launch approval.

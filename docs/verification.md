@@ -10,7 +10,7 @@ npm run build:mac
 npm run verify:mac
 ```
 
-The test suite covers real TLS connections, certificate pinning, invitation consent/expiry, five-person capacity including pending invitations, thread scoping, revocation, image bounds, profile sanitization, author attribution, native-renderer fixtures, cleanup, and Wi-Fi discovery refresh.
+The test suite covers real TLS connections, certificate pinning, invitation consent/expiry, five-person capacity including pending invitations, thread scoping, revocation, image bounds, profile sanitization, author attribution, native-renderer fixtures, cleanup, and Wi-Fi discovery refresh. Installer tests use isolated homes and mocked downloads to check platform guards, checksum/signature failures, app identity, repeat installs, backups, and rollback.
 
 ## UI fixtures
 
