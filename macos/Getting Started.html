@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multiplayer Codex · Getting started</title>
+<style>
+:root{color-scheme:light dark;font:16px/1.65 -apple-system,BlinkMacSystemFont,sans-serif;color:light-dark(#243832,#e1eae6);background:light-dark(#f6f8f5,#17211f)}body{max-width:720px;margin:64px auto;padding:0 24px}h1{font-size:38px;letter-spacing:-1.5px;line-height:1.15}h2{font-size:20px;margin-top:32px}a{color:light-dark(#126d5c,#95d7c5)}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:light-dark(#55766b,#9cb8ac)}.note{padding:18px 22px;background:light-dark(#e5eee8,#25372f);border-radius:14px}li{margin:12px 0}code{font-size:13px}footer{margin-top:48px;font-size:13px;opacity:.75}
+</style>
+<p class="eyebrow">Unofficial · Experimental · LAN only</p>
+<h1>One Codex chat.<br>A few more people.</h1>
+<p>Invite up to four collaborators into your existing chat. Keep the native composer, agent, and conversation. No extra account or relay server.</p>
+<h2>Install on both Macs</h2>
+<ol>
+<li>Use macOS 14 or newer and an installed Codex desktop app. Download the installer matching your Mac's architecture from <a href="https://github.com/Panchangam18/multiplayer-codex/releases">GitHub Releases</a>.</li>
+<li>Open the disk image, drag <strong>Multiplayer Codex</strong> to <strong>Applications</strong>, then eject the disk image. Launch the installed app, not the copy inside the disk image.</li>
+<li>A people icon appears in the menu bar. Choose <strong>Connect Codex…</strong>. If Codex needs to reopen, finish active agent work and confirm the restart. Saved chats are preserved.</li>
+<li>Allow local-network access if macOS asks. Both devices must be on a network that permits device-to-device traffic. Many guest networks intentionally block this.</li>
+</ol>
+<p class="note"><strong>Preview download:</strong> the initial release is ad-hoc signed, not Developer ID signed or notarized. macOS may block it. Building from source is available. If you deliberately trust the downloaded build, follow <a href="https://support.apple.com/en-us/102445">Apple's per-app approval instructions</a>; do not disable Gatekeeper globally or bypass malware warnings.</p>
+<h2>Share a chat</h2>
+<ol>
+<li>Right-click an idle, local chat in Codex's sidebar and choose <strong>Multiplayer</strong>.</li>
+<li>Select a nearby person. Compare the six-digit pairing code on both screens before the recipient accepts.</li>
+<li>Use the normal chat. Other people's messages have their profile avatar in the corner; hover for their name. Typing indicators show activity, never unsent draft text.</li>
+<li>Open <strong>Multiplayer</strong> again to remove someone or end sharing. <strong>Done</strong> closes the sheet without ending the session.</li>
+</ol>
+<p class="note"><strong>The host owns execution.</strong> Everyone's prompts use the host's Codex account, tools, files, and existing permissions. This is not a sandbox. Invite only people you trust. Removing access cannot erase history already received.</p>
+<h2>If something isn't working</h2>
+<ul>
+<li><strong>No nearby devices:</strong> open the companion on both Macs, allow local-network access, and wait a few seconds. Try a private network if guest Wi-Fi isolates devices.</li>
+<li><strong>Connecting fails:</strong> ensure the other Mac is awake and re-invite after changing networks. The sheet displays connection errors.</li>
+<li><strong>Unsupported Codex build:</strong> this adapter depends on private interfaces. Check release compatibility notes; don't replace or modify Codex's app bundle.</li>
+<li><strong>Need diagnostics:</strong> use the menu-bar <strong>View logs</strong> action. Review and redact logs before sharing; never publish device keys or transcripts.</li>
+</ul>
+<h2>Update or uninstall</h2>
+<p>Quit only Multiplayer Codex before replacing its app with a newer release, then reopen it and re-invite collaborators. To uninstall, quit the companion and move it to the Trash. Quit and reopen Codex normally to disable the localhost integration port. Optional pairing identities and author metadata remain in <code>~/Library/Application Support/Multiplayer Codex</code>; deleting that folder resets them. Your saved Codex chats are separate and remain untouched.</p>
+<footer>Not affiliated with or endorsed by OpenAI. <a href="https://github.com/Panchangam18/multiplayer-codex">Source and issues</a> · MIT licensed.</footer>
+</html>

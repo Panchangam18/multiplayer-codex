@@ -1,0 +1,50 @@
+:host{font:14px -apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;color:#404441;color-scheme:light dark;--sheet:rgba(225,228,225,.94);--line:rgba(65,70,65,.18);--button:rgba(95,105,96,.13);--muted:#636962}
+.capacity{text-align:center;font-size:12px;color:var(--muted);margin:18px 0 0}
+
+*{box-sizing:border-box}
+button,input{font:inherit}
+button{cursor:pointer;border:0;color:inherit}
+button:disabled{cursor:default;opacity:.55}
+button:focus-visible,input:focus-visible{outline:3px solid #6a9ee7;outline-offset:3px}
+.backdrop{position:fixed;inset:0;z-index:2147483600;display:grid;place-items:center;background:rgba(0,0,0,.12);padding:30px}
+.sheet{width:520px;max-width:calc(100vw - 60px);max-height:calc(100vh - 60px);display:flex;flex-direction:column;background:var(--sheet);border-radius:17px;box-shadow:0 22px 70px #0005,inset 0 0 0 1px #ffffff38;backdrop-filter:blur(35px) saturate(1.15);overflow:hidden}
+.sheet-header{display:flex;align-items:center;gap:12px;margin:0 24px;padding:22px 0 18px;border-bottom:1px solid var(--line)}
+.avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border-radius:50%;background:#657387;color:white;font-size:19px;font-weight:600;letter-spacing:-.5px}
+.identity{flex:1;min-width:0}
+.identity h2{font-size:21px;line-height:1.2;margin:0 0 3px;font-weight:650;letter-spacing:-.4px}
+.identity p{font-size:14px;color:var(--muted);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sheet-body{padding:0 24px;min-height:180px;overflow:auto}
+.empty{min-height:180px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:30px 0 15px}
+.empty h3{font-size:21px;letter-spacing:-.4px;margin:0 0 9px;font-weight:700}
+.empty p{font-size:14px;margin:0;color:var(--muted)}
+.empty small{font-size:11px;margin-top:18px;color:var(--muted)}
+.people{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:24px 0}
+.person{display:flex;flex-direction:column;align-items:center;width:126px;background:none;padding:7px;border-radius:12px;gap:7px}
+.person:hover:not(:disabled){background:var(--button)}
+.person .avatar{width:56px;height:56px;font-size:20px;background:#77768e}
+.person strong{max-width:100%;font-size:13px;overflow-wrap:anywhere}
+.person small{color:#3678c9;font-size:12px}
+.privacy{font-size:11px;line-height:1.5;color:var(--muted);text-align:center;max-width:430px;margin:0 auto 17px}
+.sheet-footer{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--line);background:#ffffff18}
+.sheet-footer .quiet{margin-right:auto}
+.cancel,.primary{font-size:14px;padding:8px 18px;border-radius:8px;background:var(--button);min-width:88px}
+.primary{background:#387fe8;color:white}
+.quiet{background:none;font-size:12px;color:var(--muted);padding:5px}
+.pairing{text-align:center;padding:8px 10px 20px;font-size:12px;color:var(--muted)}
+.pair-code{display:block;font-size:25px;font-weight:600;letter-spacing:5px;margin-top:7px;font-variant-numeric:tabular-nums;color:inherit}
+.members{padding:16px 0}
+.section-label{font-size:11px;font-weight:500;color:var(--muted);margin:0 0 12px}
+.sheet-notice{margin:16px 0 0;padding:12px;border-radius:8px;background:var(--button);font-size:12px;line-height:1.5}
+.member{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:12px}
+.member .avatar{width:25px;height:25px;font-size:10px}
+.member .quiet{margin-left:auto}
+.invitation{text-align:center;padding:25px 0}
+.invitation h3{font-size:19px;margin:14px 0 6px}
+.invitation p{font-size:13px;color:var(--muted);margin:5px 0 15px}
+.confirm{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;margin-top:20px}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:2147483640;max-width:540px;background:#30352f;color:#fff;border-radius:11px;padding:13px 18px;font-size:13px;line-height:1.5;box-shadow:0 4px 20px #0002}
+
+@media(prefers-color-scheme:dark){:host{color:#e8eae7;--sheet:rgba(47,50,49,.96);--line:#ffffff21;--button:#ffffff1a;--muted:#b6bcb6}
+.sheet-footer{background:#ffffff03}
+.person small{color:#8fbbfa}
+}

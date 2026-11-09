@@ -1,0 +1,20 @@
+{
+  "name": "multiplayer-codex",
+  "version": "0.3.0",
+  "private": true,
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/Panchangam18/multiplayer-codex.git" },
+  "type": "module",
+  "description": "Nearby, shared Codex conversations inside the existing desktop app",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/main.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "build:mac": "bash scripts/build-mac.sh",
+    "verify:mac": "bash scripts/verify-mac.sh",
+    "diagnose": "node scripts/diagnose.mjs"
+  },
+  "dependencies": { "bonjour-service": "^1.3.0" },
+  "devDependencies": { "jsdom": "^26.1.0" }
+}

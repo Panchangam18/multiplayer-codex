@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+coverage/
+test-results/
+.local/
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.asar
+*.log
